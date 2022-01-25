@@ -1,8 +1,78 @@
+:root {
+  --title-color: #2C2C54;
+  --background-color: #FAF4EB;
+}
+
+@font-face {
+  font-family: 'Yrsa';
+  src: url("./fonts/Yrsa/Yrsa-Bold.ttf") format("truetype");
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'Yrsa';
+  src: url("./fonts/Yrsa/Yrsa-Light.ttf") format("truetype");
+  font-weight: 300;
+}
+
 html, body {
+  margin: 0;
+  font-size: 16px;
+  background-color: var(--background-color);
+}
+
+html:is(body), body:is(body) {
+  padding-inline: 1rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Yrsa";
   margin: 0;
 }
 
-h1 {
-  font-size: 3rem;
-  color: blue;
+h1, h2, h3 {
+  margin: 0;
+  text-align: center;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  color: var(--title-color);
+}
+
+h1:is(h1), h2:is(h1), h3:is(h1) {
+  font-size: 2.125rem;
+  margin: .5rem auto;
+}
+
+.row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 100vh;
+}
+
+.row .col {
+  width: 100%;
+}
+
+.row .col:first-of-type {
+  -webkit-box-flex: .5;
+      -ms-flex: .5;
+          flex: .5;
+}
+
+.row .col:last-of-type {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
 }
