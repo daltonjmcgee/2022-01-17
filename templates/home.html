@@ -11,9 +11,11 @@
 </head>
 
 <body>
+  {{ template "header" . }}
   <main>
     {{ block "content" . }}{{ end }}
   </main>
+  {{ template "footer" . }}
   <script src="/static/main.js"></script>
 </body>
 

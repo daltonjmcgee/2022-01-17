@@ -60,7 +60,13 @@ func handle500(w http.ResponseWriter) {
 }
 
 func handleUri(w http.ResponseWriter, r *http.Request) {
-	templateHome := "../templates/home.html"
+	var templates []string
+	templateFiles, _ := ioutil.ReadDir("../templates")
+	for _, file := range templateFiles {
+		templates = append(templates, fmt.Sprintf("../templates/%s", file.Name()))
+	}
+
+	fmt.Println(templates)
 
 	if r.Method != "GET" {
 		handle405(w, r.Method)
@@ -78,14 +84,14 @@ func handleUri(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if path == "/" {
-		files := append([]string{"../public/index.html"}, templateHome)
+		files := append([]string{"../public/index.html"}, templates...)
 		t, err := template.ParseFiles(files...)
 		if err != nil {
 			handle500(w)
 		}
 		t.Execute(w, err)
 	} else {
-		files := append([]string{fmt.Sprintf("../public%s.html", path)}, templateHome)
+		files := append([]string{fmt.Sprintf("../public%s.html", path)}, templates...)
 		t, err := template.ParseFiles(files...)
 
 		if err == nil {
@@ -138,7 +144,7 @@ func handleUri(w http.ResponseWriter, r *http.Request) {
 					for key, value := range val.(map[string]interface{}) {
 						if key == queryKey && *queryableValue == value {
 							fullDirectory := fmt.Sprintf("../public%s/%s", directory, file.Name())
-							files := append([]string{fullDirectory}, templateHome)
+							files := append([]string{fullDirectory}, templates...)
 							t, _ := template.ParseFiles(files...)
 							t.Execute(w, val)
 							return

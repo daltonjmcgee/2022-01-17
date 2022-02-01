@@ -1,6 +1,6 @@
 :root {
   --title-color: #2C2C54;
-  --background-color: #FAF4EB;
+  --background-color: #EEEEEE;
 }
 
 @font-face {
@@ -15,22 +15,30 @@
   font-weight: 300;
 }
 
-html, body {
+html,
+body {
   margin: 0;
   font-size: 16px;
   background-color: var(--background-color);
 }
 
-html:is(body), body:is(body) {
+body {
   padding-inline: 1rem;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: "Yrsa";
   margin: 0;
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   margin: 0;
   text-align: center;
   width: -webkit-fit-content;
@@ -39,9 +47,9 @@ h1, h2, h3 {
   color: var(--title-color);
 }
 
-h1:is(h1), h2:is(h1), h3:is(h1) {
+h1 {
   font-size: 2.125rem;
-  margin: .5rem auto;
+  margin: 0.5rem auto;
 }
 
 .row {
@@ -66,13 +74,18 @@ h1:is(h1), h2:is(h1), h3:is(h1) {
 }
 
 .row .col:first-of-type {
-  -webkit-box-flex: .5;
-      -ms-flex: .5;
-          flex: .5;
+  -webkit-box-flex: 0.5;
+      -ms-flex: 0.5;
+          flex: 0.5;
 }
 
 .row .col:last-of-type {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
+}
+
+.row .col .video-details {
+  border: 1px solid var(--title-color);
+  padding: 1rem;
 }
