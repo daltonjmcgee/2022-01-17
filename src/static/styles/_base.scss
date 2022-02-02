@@ -1,12 +1,19 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
 html,
 body {
+  overflow-x: hidden;
   margin: 0;
   font-size: 16px;
   background-color: var(--background-color);
 }
 
 body {
-  padding-inline: 1rem;
+  margin-inline: 1.5rem;
 }
 
 h1,
@@ -16,6 +23,7 @@ h4,
 h5,
 h6 {
   font-family: "Yrsa";
+  font-weight: 700;
   margin: 0;
 }
 
@@ -23,34 +31,88 @@ h1,
 h2,
 h3 {
   margin: 0;
-  text-align: center;
-  width: fit-content;
   color: var(--title-color);
 }
 
-h1 {
-  font-size: 2.125rem;
-  margin: 0.5rem auto;
+h2,
+h3 {
+  font-size: 2.25rem;
+  line-height: 2rem;
+  text-align: center;
 }
 
-.row {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  height: 100vh;
+h4 {
+  font-size: 1.75rem;
+  line-height: 1.5rem;
+}
 
-  .col {
-    width: 100%;
-    &:first-of-type {
-      flex: 0.5;
-    }
-    &:last-of-type {
-      flex: 1;
-    }
-    .video-details {
-      border: 1px solid var(--title-color);
-      padding: 1rem;
+h3 {
+  color: var(--title-color-75);
+}
+
+header {
+  position: fixed;
+  text-align: center;
+  width: calc(100% - 3rem);
+  padding-top: 1.5rem;
+  padding-bottom: 1.125rem;
+  border-bottom: 2px solid var(--title-color-25);
+  margin-bottom: 1.5rem;
+
+  &:after {
+    content: "";
+    position: absolute;
+    left: -1.5rem;
+    top: 0;
+    height: 100%;
+    width: 100vw;
+    background-color: var(--background-color);
+    z-index: -1;
+  }
+
+  h1 {
+    font-size: 2rem;
+    line-height: 1.5rem;
+    color: var(--title-color-75);
+  }
+
+  span {
+    display: block;
+    color: var(--title-color-50);
+  }
+}
+
+main {
+  .row + .row {
+    margin-top: 12px;
+  }
+
+  .row:first-child {
+    padding-top: 120px;
+  }
+
+  .row:last-child {
+    margin-bottom: calc(120px + 1.5rem);
+  }
+}
+
+footer {
+  position: fixed;
+  height: 6.375rem;
+  width: calc(100% - 3rem);
+  border-top: 2px solid var(--title-color-25);
+  bottom: 0;
+  background-color: var(--background-color);
+
+  h4 {
+    width: fit-content;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-inline: auto;
+
+    span {
+      vertical-align: text-top;
     }
   }
 }
