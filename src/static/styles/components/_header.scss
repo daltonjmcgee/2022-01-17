@@ -1,0 +1,59 @@
+@import "../variables";
+
+header {
+  position: fixed;
+  text-align: center;
+  width: calc(100% - 3rem);
+  padding-top: 1.5rem;
+  padding-bottom: 1.125rem;
+  border-bottom: 2px solid var(--title-color-25);
+  margin-bottom: 1.5rem;
+  z-index: 1;
+
+  &:after {
+    content: "";
+    position: absolute;
+    left: -1.5rem;
+    top: 0;
+    height: 100%;
+    width: 100vw;
+    background-color: var(--background-color);
+    z-index: -1;
+  }
+
+  h1 {
+    font-size: 2rem;
+    line-height: 1.5rem;
+    color: var(--title-color-75);
+  }
+
+  span {
+    display: block;
+    color: var(--title-color-50);
+  }
+
+  @media screen and (min-width: $breakpoint) {
+    max-width: 33.33%;
+    top: calc(50vh - 250px);
+    padding-block: 0;
+    border-bottom: 0;
+
+    &:after {
+      max-width: 33vw;
+    }
+
+    h1 {
+      text-align: right;
+      margin-inline: auto;
+      width: fit-content;
+      padding-inline: 1rem;
+      font-size: clamp(2rem, 5.25vw, 6rem);
+      line-height: clamp(1.5rem, 3.5vw, 4rem);
+
+      span {
+        font-size: clamp(1.75rem, 3vw, 4rem);
+        line-height: clamp(1.25rem, 4.5vw, 3rem);
+      }
+    }
+  }
+}

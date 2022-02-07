@@ -1,0 +1,90 @@
+@import "../variables";
+
+main {
+  display: grid;
+  grid-auto-flow: column;
+  // This is because of the sass compile being stupid and not letting me use
+  // both percentage and px in the min function.
+  grid-auto-columns: 100%;
+  gap: 25%;
+  overflow-y: scroll;
+  width: 100%;
+  scroll-snap-type: inline mandatory;
+
+  @media screen and (min-width: $breakpoint) {
+    overscroll-behavior: contain;
+    background-color: #dddddd;
+    max-width: 66.67%;
+    margin-left: 33.33%;
+    gap: 3rem;
+    padding-right: 16.5vw;
+    grid-auto-columns: unquote("min(100%, 500px)");
+
+    &:before {
+      content: "";
+      width: 100%;
+    }
+  }
+
+  .col {
+    scroll-snap-align: start;
+    height: 100vh;
+    overflow-y: scroll;
+    width: 100%;
+    max-width: 100%;
+
+    @media screen and (min-width: $breakpoint) {
+      scroll-snap-align: center;
+      width: 500px;
+    }
+  }
+
+  .row.has-image {
+    width: 100%;
+
+    &:after {
+      content: "";
+      display: block;
+      padding-bottom: 100%;
+    }
+  }
+
+  .row.has-image > img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .row + .row {
+    margin-top: 12px;
+  }
+
+  .row:first-child {
+    margin-top: 7.25rem;
+
+    @media screen and (min-width: $breakpoint) {
+      margin-top: 0;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+
+  .row:last-child {
+    margin-bottom: 3rem;
+
+    @media screen and (min-width: $breakpoint) {
+      position: fixed;
+      left: 0;
+      width: 33.33%;
+      padding-inline: 1rem;
+      top: calc(33.33% + 2rem);
+
+      h2,
+      h3 {
+        font-size: clamp(2.25rem, 3vw, 3.5rem);
+        line-height: clamp(2.25rem, 3vw, 3.5rem);
+      }
+    }
+  }
+}

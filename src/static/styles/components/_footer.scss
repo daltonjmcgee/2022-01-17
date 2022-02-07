@@ -1,0 +1,42 @@
+@import '../variables';
+
+footer {
+  position: fixed;
+  height: 3rem;
+  width: calc(100% - 3rem);
+  border-top: 2px solid var(--title-color-25);
+  bottom: 0;
+  background-color: var(--background-color);
+
+  h4 {
+    width: fit-content;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-inline: auto;
+
+    span {
+      vertical-align: text-top;
+    }
+  }
+
+  @media screen and (min-width: 769px) {
+    max-width: 33.33%;
+    border-top: 0;
+    bottom: calc(50vh - 250px);
+    h4 {
+      width: max-content;
+      gap: 1.5rem;
+      border-radius: 15px;
+      border: 3px solid var(--title-color-50);
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: .25rem 1.5rem .125rem 1.5rem;
+
+      span img {
+        margin-top: 4px;
+      }
+    }
+  }
+}

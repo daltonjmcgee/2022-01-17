@@ -1,7 +1,11 @@
 :root {
-  --title-color: #2C2C54;
-  --title-color-75: #2C2C54BF;
-  --title-color-50: #2C2C5480;
-  --title-color-25: #2C2C5440;
-  --background-color: #EEEEEE;
+  --title-color: #2c2c54;
+  --title-color-75: #2c2c54bf;
+  --title-color-50: #2c2c5480;
+  --title-color-25: #2c2c5440;
+  --background-color: #eeeeee;
+
+  // sass-only variables
 }
+
+$breakpoint: 769px;

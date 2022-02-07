@@ -66,8 +66,6 @@ func handleUri(w http.ResponseWriter, r *http.Request) {
 		templates = append(templates, fmt.Sprintf("../templates/%s", file.Name()))
 	}
 
-	fmt.Println(templates)
-
 	if r.Method != "GET" {
 		handle405(w, r.Method)
 		return
@@ -127,7 +125,7 @@ func handleUri(w http.ResponseWriter, r *http.Request) {
 					continue
 				}
 
-				jsonBytes, err := loadFile("./noSQL.json")
+				jsonBytes, err := loadFile("../noSQL.json")
 
 				if err != nil {
 					// This should probably throw a different error
@@ -145,8 +143,13 @@ func handleUri(w http.ResponseWriter, r *http.Request) {
 						if key == queryKey && *queryableValue == value {
 							fullDirectory := fmt.Sprintf("../public%s/%s", directory, file.Name())
 							files := append([]string{fullDirectory}, templates...)
-							t, _ := template.ParseFiles(files...)
-							t.Execute(w, val)
+							t, err := template.ParseFiles(files...)
+							if err != nil {
+								fmt.Println(err)
+								handle500(w)
+							} else {
+								t.Execute(w, val)
+							}
 							return
 						}
 					}
@@ -156,7 +159,6 @@ func handleUri(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 	}
-	return
 }
 
 func handleStatic(w http.ResponseWriter, r *http.Request) {
