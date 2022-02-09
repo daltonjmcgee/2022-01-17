@@ -82,12 +82,23 @@ func handleUri(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if path == "/" {
+		jsonBytes, err := loadFile("../noSQL.json")
+
+		if err != nil {
+			// This should probably throw a different error
+			handle404(w)
+			return
+		}
+
+		jsonMap := map[string][]interface{}{}
+		json.Unmarshal([]byte(jsonBytes), &jsonMap)
+
 		files := append([]string{"../public/index.html"}, templates...)
 		t, err := template.ParseFiles(files...)
 		if err != nil {
 			handle500(w)
 		}
-		t.Execute(w, err)
+		t.Execute(w, jsonMap)
 	} else {
 		files := append([]string{fmt.Sprintf("../public%s.html", path)}, templates...)
 		t, err := template.ParseFiles(files...)
