@@ -2,6 +2,10 @@
 {{ block "title" nil }}Jen McKenzie | Executive Producer{{ end }}
 {{ block "content" nil }}
 
+<div class="arrows">
+  <div class="arrow left"></div>
+  <div class="arrow right"></div>
+</div>
 {{ range $item := .data }}
 <section class="col" id="{{ $item.title }}">
   <div class="row has-image"><img src="{{ $item.image }}" alt=""></div>
