@@ -3,18 +3,32 @@
 {{ block "content" nil }}
 
 <div class="arrows">
-  <div class="arrow left"></div>
-  <div class="arrow right"></div>
+  <div class="arrow previous"></div>
+  <div class="arrow next"></div>
 </div>
 {{ range $item := .data }}
+{{ if $item.vimeoId }}
 <section class="col" id="{{ $item.title }}">
-  <div class="row has-image"><img src="{{ $item.image }}" alt=""></div>
+  <div class="row has-image"><iframe
+      src="https://player.vimeo.com/video/{{ $item.vimeoId }}?h=009d8fdf44&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+      frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen
+      style="position:absolute;top:0;left:0;width:100%;height:100%;"
+      title="QSQU0125000H_Oscar_Longform-ProRes"></iframe></div>
   <div class="row content">
+    {{ if $item.client }}
     <h2>{{ $item.client }}</h2>
-    <h2>{{ $item.title }}</h2>
+    {{ end }}
+    {{ if $item.title }}
+    <h2>"{{ $item.title }}"</h2>
+    {{ end }}
+    {{ if $item.agency }}
     <h3>agency: {{ $item.agency }}</h3>
+    {{ end }}
+    {{ if $item.director }}
     <h3>director: {{ $item.director }}</h3>
+    {{ end }}
   </div>
 </section>
+{{ end }}
 {{ end }}
 {{ end }}

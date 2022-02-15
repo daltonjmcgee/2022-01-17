@@ -42,7 +42,9 @@ body {
   height: -webkit-min-content;
   height: -moz-min-content;
   height: min-content;
-  overflow-y: hidden;
+  overflow: hidden;
+  height: 100vh;
+  position: relative;
   margin: 0;
   font-size: 16px;
   background-color: var(--background-color);
@@ -93,6 +95,11 @@ h3 {
   font-size: 2.25rem;
   line-height: 2rem;
   text-align: center;
+}
+
+h3 {
+  font-size: 1.5rem;
+  line-height: 1.375rem;
 }
 
 h3 {
@@ -188,8 +195,9 @@ main {
   grid-auto-flow: column;
   grid-auto-columns: 100%;
   gap: 25%;
-  overflow-y: scroll;
+  overflow-y: hidden;
   width: 100%;
+  height: 100vh;
   -ms-scroll-snap-type: inline mandatory;
       scroll-snap-type: inline mandatory;
 }
@@ -202,7 +210,7 @@ main {
     margin-left: 33.33%;
     gap: 3rem;
     padding-right: 16.5vw;
-    grid-auto-columns: min(100%, 500px);
+    grid-auto-columns: min(100%, 1000px);
   }
   main:before {
     content: "";
@@ -210,138 +218,138 @@ main {
   }
 }
 
-main .arrows {
-  z-index: 1;
-  position: absolute;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
-  left: 0;
-  width: 100vw;
-}
-
-main .arrows .arrow {
-  --border: 3px solid var(--title-color-75);
-  --border-null: 3px solid var(--title-color-25);
-  --border-hover: 3px solid var(--title-color);
-  --arrows: 6px solid var(--title-color-75);
-  --arrows-null: 6px solid var(--title-color-25);
-  --arrows-hover: 6px solid var(--title-color);
-  position: absolute;
-  height: 50px;
-  width: 50px;
-  -webkit-transform: rotate(45deg);
-          transform: rotate(45deg);
-  border-radius: 50%;
-  border: var(--border);
-  -webkit-transition: all var(--transition-speed) var(--transition-style);
-  transition: all var(--transition-speed) var(--transition-style);
-  background-color: var(--background-color);
-  cursor: pointer;
-}
-
-main .arrows .arrow:after {
-  content: "";
-  position: absolute;
-  height: 20px;
-  width: 20px;
-  border-left: var(--arrows);
-  border-bottom: var(--arrows);
-  top: 25%;
-  right: 25%;
-  border-radius: 5px;
-  -webkit-transition: all var(--transition-speed) var(--transition-style);
-  transition: all var(--transition-speed) var(--transition-style);
-  -webkit-transition-delay: 50ms;
-          transition-delay: 50ms;
-}
-
-main .arrows .arrow.left {
-  left: 16px;
-}
-
-main .arrows .arrow.left:not(.inactive):hover {
-  -webkit-transform: rotate(45deg) translate(-2px, 2px);
-          transform: rotate(45deg) translate(-2px, 2px);
-  border: var(--border-hover);
-}
-
-main .arrows .arrow.left:not(.inactive):hover:after {
-  border-left: var(--arrows-hover);
-  border-bottom: var(--arrows-hover);
-  -webkit-transform: translate(-1px, 1px);
-          transform: translate(-1px, 1px);
-}
-
-main .arrows .arrow.right {
-  right: 16px;
-}
-
-main .arrows .arrow.right:after {
-  -webkit-transform: scale(-1);
-          transform: scale(-1);
-  top: 32%;
-  right: 32%;
-}
-
-main .arrows .arrow.right:not(.inactive):hover {
-  -webkit-transform: rotate(45deg) translate(2px, -2px);
-          transform: rotate(45deg) translate(2px, -2px);
-  border: var(--border-hover);
-}
-
-main .arrows .arrow.right:not(.inactive):hover:after {
-  border-left: var(--arrows-hover);
-  border-bottom: var(--arrows-hover);
-  -webkit-transform: scale(-1) translate(-1px, 1px);
-          transform: scale(-1) translate(-1px, 1px);
-}
-
-main .arrows .arrow.inactive {
-  border: var(--border-null);
-}
-
-main .arrows .arrow.inactive:after {
-  border-left: var(--arrows-null);
-  border-bottom: var(--arrows-null);
-}
-
 @media screen and (min-width: 769px) {
   main .arrows {
+    z-index: 1;
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+    left: 0;
+    width: 100vw;
     left: 33vw;
     width: 67vw;
   }
-  main .arrows .arrow.left {
+  main .arrows .arrow {
+    --border: 3px solid var(--title-color-75);
+    --border-null: 3px solid var(--title-color-25);
+    --border-hover: 3px solid var(--title-color);
+    --arrows: 6px solid var(--title-color-75);
+    --arrows-null: 6px solid var(--title-color-25);
+    --arrows-hover: 6px solid var(--title-color);
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    -webkit-transform: rotate(45deg);
+            transform: rotate(45deg);
+    border-radius: 50%;
+    border: var(--border);
+    -webkit-transition: all var(--transition-speed) var(--transition-style);
+    transition: all var(--transition-speed) var(--transition-style);
+    background-color: var(--background-color);
+    cursor: pointer;
+  }
+  main .arrows .arrow:after {
+    content: "";
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    border-left: var(--arrows);
+    border-bottom: var(--arrows);
+    top: 25%;
+    right: 25%;
+    border-radius: 5px;
+    -webkit-transition: all var(--transition-speed) var(--transition-style);
+    transition: all var(--transition-speed) var(--transition-style);
+    -webkit-transition-delay: 50ms;
+            transition-delay: 50ms;
+  }
+  main .arrows .arrow.previous {
+    left: 16px;
+  }
+  main .arrows .arrow.previous:not(.inactive):hover {
+    -webkit-transform: rotate(45deg) translate(-2px, 2px);
+            transform: rotate(45deg) translate(-2px, 2px);
+    border: var(--border-hover);
+  }
+  main .arrows .arrow.previous:not(.inactive):hover:after {
+    border-left: var(--arrows-hover);
+    border-bottom: var(--arrows-hover);
+    -webkit-transform: translate(-1px, 1px);
+            transform: translate(-1px, 1px);
+  }
+  main .arrows .arrow.next {
+    right: 16px;
+  }
+  main .arrows .arrow.next:after {
+    -webkit-transform: scale(-1);
+            transform: scale(-1);
+    top: 32%;
+    right: 32%;
+  }
+  main .arrows .arrow.next:not(.inactive):hover {
+    -webkit-transform: rotate(45deg) translate(2px, -2px);
+            transform: rotate(45deg) translate(2px, -2px);
+    border: var(--border-hover);
+  }
+  main .arrows .arrow.next:not(.inactive):hover:after {
+    border-left: var(--arrows-hover);
+    border-bottom: var(--arrows-hover);
+    -webkit-transform: scale(-1) translate(-1px, 1px);
+            transform: scale(-1) translate(-1px, 1px);
+  }
+  main .arrows .arrow.inactive {
+    border: var(--border-null);
+  }
+  main .arrows .arrow.inactive:after {
+    border-left: var(--arrows-null);
+    border-bottom: var(--arrows-null);
+  }
+  main .arrows .arrow.previous {
     left: 5%;
   }
-  main .arrows .arrow.right {
+  main .arrows .arrow.next {
     right: 5%;
   }
 }
 
 main .col {
   scroll-snap-align: start;
-  height: 100vh;
-  overflow-y: scroll;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
   width: 100%;
-  max-width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: -4rem;
+  gap: 24px;
 }
 
 @media screen and (min-width: 769px) {
   main .col {
+    margin-top: 0;
+    display: block;
     scroll-snap-align: center;
-    width: 500px;
   }
 }
 
 main .row.has-image {
   width: 100%;
+  max-width: 1000px;
 }
 
 main .row.has-image:after {
   content: "";
   display: block;
-  padding-bottom: 100%;
+  padding-bottom: 56.25%;
 }
 
 main .row.has-image > img {
@@ -352,14 +360,6 @@ main .row.has-image > img {
      object-fit: cover;
 }
 
-main .row + .row {
-  margin-top: 12px;
-}
-
-main .row:first-child {
-  margin-top: 7.25rem;
-}
-
 @media screen and (min-width: 769px) {
   main .row:first-child {
     margin-top: 0;
@@ -367,10 +367,6 @@ main .row:first-child {
     -webkit-transform: translateY(-50%);
             transform: translateY(-50%);
   }
-}
-
-main .row:last-child {
-  margin-bottom: 3rem;
 }
 
 @media screen and (min-width: 769px) {
@@ -393,10 +389,13 @@ main .row:last-child {
     -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
             clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
   }
-  main .row:last-child h2,
-  main .row:last-child h3 {
+  main .row:last-child h2 {
     font-size: clamp(2.25rem, 3vw, 3.5rem);
     line-height: clamp(2.25rem, 3vw, 3.5rem);
+  }
+  main .row:last-child h3 {
+    font-size: clamp(1.25rem, 3vw, 2.25rem);
+    line-height: clamp(1.25rem, 3vw, 2.25rem);
   }
 }
 
