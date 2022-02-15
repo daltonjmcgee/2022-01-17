@@ -42,11 +42,27 @@ function arrowNavigationHandler(main) {
   handleClick("previous");
 }
 
-
+function paperPlanAnimationHandler() {
+  const contactLink = document.getElementById('contact-link');
+  if (contactLink) {
+    contactLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      const airplane = document.querySelector('.airplane');
+      if (airplane) {
+        airplane.classList.add('active');
+        setTimeout(() => {
+          window.location = 'mailto:jen@jenmckenzie.com';
+          airplane.classList.remove('active');
+        }, 1500);
+      }
+    })
+  }
+}
 
 document.addEventListener('DOMContentLoaded', () => {
   const main = document.querySelector('main');
   contentHandler(main);
-  arrowNavigationHandler(main)
+  arrowNavigationHandler(main);
+  paperPlanAnimationHandler();
 })
 
